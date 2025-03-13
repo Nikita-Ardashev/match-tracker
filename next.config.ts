@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+	compiler: {
+		styledComponents: true,
+	},
+	async rewrites() {
+		return [
+			{
+				source: '/api/:path*',
+				destination: 'https://app.ftoyd.com/fronttemp-service/:path*',
+			},
+		];
+	},
 };
 
 export default nextConfig;
